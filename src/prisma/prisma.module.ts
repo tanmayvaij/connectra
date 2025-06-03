@@ -1,4 +1,13 @@
 import { Module } from '@nestjs/common';
+import { PrismaClient } from '../../generated/prisma';
 
-@Module({})
+@Module({
+  providers: [
+    {
+      provide: PrismaClient,
+      useValue: new PrismaClient(),
+    },
+  ],
+  exports: [PrismaClient],
+})
 export class PrismaModule {}
